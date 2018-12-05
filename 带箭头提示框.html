@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#warp{
+				position: absolute;
+				left: -70px;
+				top: -60px;
+				width: 100px;
+				height: 50px;
+				font: 10px/10px "微软雅黑";
+				line-height: 50px;
+				border: 1px solid lightskyblue;
+				border-radius: 10px;
+				display: none;
+			}
+			#warp:before{
+				content: '';
+				display: block;
+				width:0; 
+				height:0; 
+				position:absolute; 
+				top:50px; 
+				left:70px; 
+				border-left:7px solid transparent; 
+				border-top:9px solid lightskyblue; 
+				border-right:7px solid transparent;
+			}
+			#warp:after{
+				content: '';
+				display: block;
+				width:0; 
+				height:0; 
+				position:absolute; 
+				top:48px; 
+				left:70px; 
+				border-left:7px solid transparent; 
+				border-top:9px solid white; 
+				border-right:7px solid transparent;
+			}
+			
+			
+			#test{
+				width: 0px;
+				height: 20px;
+				border-width: 10px;
+				border-style: solid;
+				border-color: red transparent transparent transparent;
+			}
+			
+			#demo{
+				position: relative;
+				left: 100px;
+				top: 100px;
+				width: 100px;
+				height: 20px;
+				border: 0px solid black;
+			}
+			
+			#demo:hover #warp{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='container'>
+			<div id='demo'>
+				<div id='warp'></div>
+				<input type="text" id='inputText' />
+			</div>
+		</div>
+		<!--<div id='test'></div>-->
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var inputText = document.getElementById('inputText');
+			var inputWarp = document.getElementById('warp');
+			inputText.oninput = function(){
+				var value = inputText.value;
+				inputWarp.innerText = value;
+			}
+			
+			/*var demo = document.getElementById('demo');*/
+			
+			var wrap = document.getElementById('demo');
+			
+			var hoverDir = function(e){
+			var w=wrap.offsetWidth;//宽
+			var h=wrap.offsetHeight;//高
+			var x=(e.clientX - wrap.offsetLeft - (w / 2)) * (w > h ? (h / w) : 1);
+			var y=(e.clientY - wrap.offsetTop - (h / 2)) * (h > w ? (w / h) : 1);
+			var direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4;
+			var eventType = e.type;
+			var dirName = new Array('上方','右侧','下方','左侧');
+			if(e.type == 'mouseover' || e.type == 'mouseenter'){
+			wrap.innerHTML=dirName[direction]+'进入';
+			}else{
+			wrap.innerHTML=dirName[direction]+'离开';
+			}
+			}
+			
+			if(window.addEventListener){
+			wrap.addEventListener('mouseover',hoverDir,false);
+			wrap.addEventListener('mouseout',hoverDir,false);
+			}else if(window.attachEvent){ //ie浏览器的方法
+			wrap.attachEvent('onmouseenter',hoverDir);
+			wrap.attachEvent('onmouseleave',hoverDir);
+			}
+			
+		}
+	</script>
+</html>

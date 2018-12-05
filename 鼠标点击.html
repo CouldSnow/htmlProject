@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.container{
+				position: relative;
+				left: 50%;
+				top:50%;
+				width:100px;
+				height: 100px;
+				
+				align-content: center;
+			}
+			.container > .outciclr{
+				position: absolute;
+				left: 10px;
+				top: 10px;
+				width:80px;
+				height:80px;
+				border: 5px solid ;
+				border-color: rgba(221,222,223,.6);
+				border-radius: 50%;
+				box-sizing: border-box;
+				transform-origin: center center;
+				/*hover倒放*/
+				transition: 1s;
+			}
+			.outciclr > .ciclr{
+				position: absolute;
+				left: 15px;
+				top: 15px;
+				width:40px;
+				height:40px;
+				background-color: dodgerblue;
+				border-radius: 50%;
+				box-sizing: border-box;
+			}
+			
+			.container > .outciclr:hover{
+				transform: rotate(180deg);
+				border-right-color:cornflowerblue;
+				border-left-color: red;
+				/*box-shadow:0px 0px 50px yellow inset;*/
+				transition:1s;
+			}
+			
+			.line{
+				position: absolute;
+				width:2px;
+				height: 2px;
+				background: pink;
+			}
+			.container1{
+				border: 1px solid black;
+				width:1000px;
+				height: 1000px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container" >
+			<div class="outciclr">
+				<div class="ciclr">
+					
+				</div>
+			</div>
+		</div>
+		<div class="container1" onmousemove="getMousePos(event,this)">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		function getMousePos(event,obj){
+			var e =event||window.event;
+			console.log(e.screenX+"_"+e.screenY)
+			draw(e.screenX,e.screenY,obj);
+		}
+		
+		function draw(x,y,obj){
+			var div=document.createElement("div");
+			div.setAttribute("class","line");
+			 div.style.left=x+"px";
+			 div.style.top=y+"px";
+			obj.appendChild(div);
+		}
+	</script>
+</html>

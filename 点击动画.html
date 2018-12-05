@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#container{
+				border: 2px solid black;
+				width: 100%;
+				height: 500px;
+				font: 100px/200px "微软雅黑";
+				-moz-user-select: none;
+				-webkit-user-select: none;
+			}
+			#container .model{
+				position: absolute;
+				border:1px solid black;
+				width:20px;
+				height:20px;
+				border-radius: 50%;
+			}
+			
+			#container .modelanimal{
+				
+				animation: modelanimal 1s ;
+				animation-fill-mode: forwards;
+			}
+			@keyframes modelanimal{
+				0%{
+					
+				}
+				100%{
+					transform:translate(0, -100px);
+					/*transform: scale(2,2);*/
+					width: 40px;
+					height: 40px;
+					border-color: rgba(255,255,255,.2);
+					background: rgba(255,255,255,.2);
+				}
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id='container'>
+			ffsdfsdfqwewqeqweqwedaggsa
+		</div>
+	</body>
+	<script type='text/javascript'>
+		window.onload=function(){
+			var container = document.getElementById("container");
+			container.onclick=function(ev){
+				/*var premodel = container.querySelector("#container .model");
+				if(premodel!=null){
+					premodel.remove();
+				}*/
+				var x = ev.clientX;
+				var y = ev.clientY;
+				var model = document.createElement("div");
+				model.classList.add("model");
+				model.classList.add("modelanimal");
+				model.style.left = x-10+"px";
+				model.style.top = y-10+"px";
+				model.style.backgroundColor="greenyellow";
+				container.appendChild(model);
+			}
+			
+			function clearModel(){
+				var models = container.querySelectorAll("#container .model");
+				if(models!=null){
+					models.forEach(function(model){
+						model.remove();
+					})
+				}
+			}
+			setInterval(clearModel,3000);
+			/*var look=["1","2","3","4"];
+			container.onmousedown=function(ev){
+				var x = ev.clientX;
+				var y = ev.clientY;
+				var model = document.createElement('span');
+				model.style.position="absolute";
+				model.style.left = x-10+"px";
+				model.style.top = y-10+"px";
+				model.style.transition="1s";
+				var sublook = look[Math.round(Math.random()*3)];
+				model.innerText = sublook;
+				container.appendChild(model);
+				
+				container.onmouseup=function(){
+					for(var i=0;i<100;i++){
+						model.style.top = x-i+"px";
+					}
+				}
+				
+			}*/
+		}
+	</script>
+</html>

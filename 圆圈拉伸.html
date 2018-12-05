@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#left-circle{
+				border: 2px solid dodgerblue;
+				float: left;
+				width: 50px;
+				height: 100px;
+				border-radius:50px 0 0 50px;
+				border-right-style: none;
+			}
+			#right-circle{
+				border: 2px solid dodgerblue;
+				float: left;
+				width: 50px;
+				height: 100px;
+				border-radius:0 50px 50px 0;
+				border-left-style: none;
+			}
+			#center-circle{
+				border: 2px solid dodgerblue;
+				float: left;
+				width: 10px;
+				height: 100px;
+				border-right-style: none;
+				border-left-style: none;
+				transition: 1s;
+			}
+			/*#container{
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				width: 200px;
+				height:100px;
+				transition: 1s;
+			}*/
+			
+			/*#container:hover{
+				width:500px;
+			}*/
+			#container>#center-circle:hover{
+				width: 500px;
+			}
+			#trans{
+			 	width: 0px;
+			 	height: 0px;
+			 	border-bottom: 50px solid red;
+			 	border-left: 50px solid transparent;
+			 	border-top: 50px solid transparent;
+			 	border-right: 50px solid transparent;
+			}
+			#circle{
+				width: 100px;
+				height: 100px;
+				border:10px solid dodgerblue;
+				border-bottom-left-radius: 100px;
+				border-bottom-right-radius: 100px;
+				border-top-left-radius: 100px;
+				border-top-right-radius: 100px;
+				transition: 0.5s;
+				/*transition-timing-function: inherit;*/
+				/*transform-origin: center center; 
+				/*transform: rotate(90deg);*/
+				
+			}
+			#circle:hover{
+				/*height: 500px;*/
+				width:400px;
+			}
+			
+			#circle >.span{
+				position:absolute ;
+				left: 130px;
+				top:45px;
+				width: 0px;
+				height: 50px;
+				/*background-color: #808080;*/
+				overflow: hidden;
+				font:30px/50px "微软雅黑";
+				transition: 0.5s;
+			}
+			
+			#circle:hover .span{
+				width: 240px;
+			}
+			
+			#circle>.star{
+				position: absolute;
+				left: 28px;
+				top:28px;
+				width:80px;
+				height: 80px;
+				border: 2px solid transparent;
+				border-radius: 50%;
+				box-sizing: border-box;
+				font: 60px/60px "微软雅黑";
+				font-weight: bold;
+				align-content: center;
+				line-height: 80px;
+				transition: 1s;
+				background-color: lightblue;
+			}
+			
+			#circle:hover .star{
+				background-color: cornflowerblue;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div id="container">
+			<div id="left-circle"></div>
+			<div id="center-circle"></div>
+			<div id="right-circle"></div>
+		</div>-->
+		<div id="circle">
+			<div class="star"></div>
+			<div class="span">
+				你好，召唤师
+			</div>
+		</div>
+	</body>
+</html>

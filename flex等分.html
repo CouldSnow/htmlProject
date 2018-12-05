@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wrap{
+				position: relative;
+				left: 45%;
+				top:100px;
+				width: 100px;
+				height: 200px;
+				border: 1px solid black;
+				
+				display: flex;
+			}
+			#wrap > .item{
+				height: 20px;
+				background-color: pink;
+				text-align: center;
+				line-height: 20px;
+				border: 1px solid paleturquoise;
+				
+				flex-shrink: 1;/*比例缩小*/
+				flex-grow: 1;/*比例放大*/
+				flex-basis: 50px;/*项目占据固定空间*/
+			}
+			#wrap > .item:hover{
+				flex-grow: 2; /*因为flex-basis固定空间了，所以item没有多余空间了，所以就不能放大2倍了*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+		</div>
+	</body>
+</html>
